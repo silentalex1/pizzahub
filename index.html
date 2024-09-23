@@ -6,21 +6,33 @@
     <title>Pizza Hub - Entertainment Central</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --text-color: #333;
+            --bg-color: #f7f7f7;
+        }
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
-            color: #333;
-            min-height: 100vh;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
             position: fixed;
             width: 100%;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         nav ul {
             list-style-type: none;
@@ -35,10 +47,10 @@
             color: white;
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s ease;
+            transition: opacity 0.3s ease;
         }
         nav ul li a:hover {
-            color: #ffd700;
+            opacity: 0.8;
         }
         .hero {
             height: 100vh;
@@ -46,88 +58,91 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
         }
         .hero h1 {
             font-size: 4rem;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 1rem;
         }
         .cta-button {
-            background: linear-gradient(45deg, #ffd700, #ff8c00);
-            color: white;
-            padding: 1rem 2rem;
+            background: white;
+            color: var(--primary-color);
+            padding: 0.8rem 2rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
         }
         .cta-button:hover {
-            transform: scale(1.05);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         .features {
             display: flex;
             justify-content: space-around;
-            padding: 4rem 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            padding: 4rem 0;
         }
         .feature {
             text-align: center;
             padding: 2rem;
             border-radius: 10px;
-            background: rgba(255, 255, 255, 0.2);
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
         }
         .feature:hover {
             transform: translateY(-10px);
         }
         footer {
-            background: rgba(0, 0, 0, 0.5);
+            background: var(--text-color);
             color: white;
             text-align: center;
-            padding: 1rem;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
+            padding: 1rem 0;
         }
     </style>
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="games.html">Games</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="https://github.com/silentalex1/pizzahub/blob/main/games/Games">Games</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main>
         <section class="hero">
-            <div>
+            <div class="container">
                 <h1>Pizza Hub</h1>
-                <a href="games.html" class="cta-button">Explore Games</a>
+                <p>Your gateway to exciting entertainment</p>
+                <a href="https://github.com/silentalex1/pizzahub/blob/main/games/Games" class="cta-button">Explore Games</a>
             </div>
         </section>
-        <section class="features">
+        <section class="features container">
             <div class="feature">
                 <h2>Exciting Experiences</h2>
-                <p>Engage in exciting experiences from wherever you are.</p>
+                <p>Engage in thrilling adventures from anywhere.</p>
             </div>
             <div class="feature">
                 <h2>Best Entertainment</h2>
-                <p>Relax and enjoy the best of entertainment.</p>
+                <p>Enjoy top-notch entertainment at your fingertips.</p>
             </div>
             <div class="feature">
-                <h2>New Adventures</h2>
-                <p>Explore new adventures and thrilling challenges.</p>
+                <h2>New Challenges</h2>
+                <p>Discover and conquer exciting new challenges.</p>
             </div>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 Pizza Hub. All rights reserved. | <a href="https://github.com/silentalex1/pizzahub/tree/main">GitHub</a></p>
+        <div class="container">
+            <p>&copy; 2024 Pizza Hub. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>
