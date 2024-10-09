@@ -3,104 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chrome Extension Manager</title>
+    <title>Extension Scanner</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
             padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
             text-align: center;
         }
-        #extensionList {
-            display: none;
-            margin: 20px auto;
-            padding: 10px;
-            background: white;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            max-width: 600px;
-        }
-        .extension-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px;
-            border-bottom: 1px solid #ddd;
-        }
-        #searchBar {
-            display: none;
-            margin-bottom: 20px;
-        }
-        #toggleButton {
-            cursor: pointer;
-            padding: 5px 10px;
-            background-color: #28a745;
+        button {
+            background: #4CAF50;
             color: white;
+            padding: 15px 32px;
             border: none;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            cursor: pointer;
+            font-size: 16px;
         }
-        #toggleButton:hover {
-            background-color: #218838;
+        button:hover {
+            background: #45a049;
+        }
+        .search-bar {
+            margin-top: 20px;
+        }
+        .extension-list {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+        .switch input {
+            display: none;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 20px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #4CAF50;
+        }
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+        .browser-info {
+            color: green;
+            position: absolute;
+            top: 20px;
+            right: 20px;
         }
     </style>
 </head>
 <body>
-
-<h1>Chrome Extension Manager</h1>
-<button id="scanButton">Scan Chrome</button>
-
-<div id="searchBar">
-    <input type="text" id="searchInput" placeholder="Search extensions..." onkeyup="filterExtensions()">
-</div>
-
-<div id="extensionList">
-    <h2>Installed Extensions:</h2>
-    <div class="extension-item" data-name="Extension 1">
-        <span>Extension 1</span>
-        <button onclick="toggleExtension(this)">Disable</button>
+    <div class="container">
+        <div class="browser-info" id="browser-info"></div>
+        <button onclick="scanExtensions()">Scan Extensions</button>
+        <div class="search-bar">
+            <input type="text" id="search-bar" placeholder="Search extensions...">
+        </div>
+        <div class="extension-list" id="extension-list"></div>
     </div>
-    <div class="extension-item" data-name="Extension 2">
-        <span>Extension 2</span>
-        <button onclick="toggleExtension(this)">Disable</button>
-    </div>
-    <div class="extension-item" data-name="Extension 3">
-        <span>Extension 3</span>
-        <button onclick="toggleExtension(this)">Disable</button>
-    </div>
-    <!-- Add more extensions as needed -->
-</div>
 
-<script>
-    document.getElementById('scanButton').onclick = function() {
-        document.getElementById('extensionList').style.display = 'block';
-        document.getElementById('searchBar').style.display = 'block';
-    };
-
-    function toggleExtension(button) {
-        const extensionItem = button.parentElement;
-        const extensionName = extensionItem.dataset.name;
-        const action = button.textContent === 'Disable' ? 'Disabled' : 'Enabled';
-        
-        // Simulate disabling an extension
-        alert(`${extensionName} has been ${action.toLowerCase()}.`);
-        extensionItem.style.display = 'none';
-    }
-
-    function filterExtensions() {
-        const input = document.getElementById('searchInput').value.toLowerCase();
-        const extensionItems = document.querySelectorAll('.extension-item');
-
-        extensionItems.forEach(item => {
-            const name = item.dataset.name.toLowerCase();
-            if (name.includes(input)) {
-                item.style.display = 'flex';
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    }
-</script>
-
+    <script>
+        function scanExtensions() {
+            document.getElementById('browser-info').innerText = navigator.userAgent;
+            const extensions = ["Extension 1", "Extension 2", "Extension 3"];
+            const extensionList = document.getElementById('extension-list');
+            extensionList.innerHTML = '';
+            extensions.forEach(extension => {
+                const div = document.createElement('div');
+                div.innerHTML = `
+                    ${extension}
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                `;
+                extensionList.appendChild(div);
+            });
+        }
+    </script>
 </body>
 </html>
