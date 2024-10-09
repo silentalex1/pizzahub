@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmarklet run</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #000000, #FFA500);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
+        .header {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .search-bar {
+            width: 50%;
+            padding: 12px 24px;
+            font-size: 18px;
+            border: none;
+            border-radius: 30px;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(255, 165, 0, 0.5);
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 50px;
+        }
+
+        .bookmarklet-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            width: 300px;
+        }
+
+        .bookmarklet-button {
+            background-color: #FFA500;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .bookmarklet-button:hover {
+            background-color: #FF8C00;
+            transform: scale(1.05);
+        }
+
+        .bookmarklet-description {
+            color: white;
+            margin-top: 10px;
+        }
+
+        #results {
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="search-container">
+            <input type="text" class="search-bar" id="searchInput" placeholder="Search Bookmarklet Designs...">
+        </div>
+    </div>
+    <div class="content">
+        <div id="results"></div>
+        <div class="bookmarklet-container">
+            <h3 style="color: white;">Bookmarklet Design</h3>
+            <button class="bookmarklet-button" onclick="runBookmarklet()">Bookmarklet Run Test</button>
+            <p class="bookmarklet-description">This is a test for bookmarklet</p>
+        </div>
+    </div>
+
+    <script>
+        const bookmarkletDesigns = [
+            { title: "Design 1", description: "A sleek and modern bookmarklet design" },
+            { title: "Design 2", description: "Minimalist approach to bookmarklet functionality" },
+            { title: "Design 3", description: "Feature-rich bookmarklet with advanced options" }
+        ];
+
+        function runBookmarklet() {
+            alert("Bookmarklet test activated!");
+        }
+
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const results = bookmarkletDesigns.filter(design => 
+                design.title.toLowerCase().includes(searchTerm) || 
+                design.description.toLowerCase().includes(searchTerm)
+            );
+
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = results.map(design => 
+                `<div style="margin-bottom: 10px;">
+                    <h4 style="margin: 0;">${design.title}</h4>
+                    <p style="margin: 5px 0;">${design.description}</p>
+                </div>`
+            ).join('');
+        });
+    </script>
+</body>
+</html>
