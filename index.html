@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini Browser</title>
+    <title>Mini Google Browser</title>
     <style>
         body {
             margin: 0;
@@ -17,12 +17,34 @@
 
         h1 {
             margin: 10px 0;
-            color: #7289DA;
+            color: #4285F4; /* Google Blue */
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4285F4; /* Google Blue */
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #357ae8; /* Darker shade of Google Blue */
         }
 
         iframe {
             width: 100%;
-            height: 90%;
+            height: 80%;
             border: none;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -30,24 +52,24 @@
 
         @media (max-width: 768px) {
             iframe {
-                height: 80%;
+                height: 70%;
             }
         }
     </style>
 </head>
 <body>
-    <h1>Mini Browser</h1>
-    <iframe id="miniBrowser" src="" title="Mini Browser" allowfullscreen></iframe>
+    <h1>Mini Google Browser</h1>
+    <input type="text" id="searchInput" placeholder="Enter your search term...">
+    <button onclick="performSearch()">Search</button>
+    <iframe id="miniBrowser" src="https://www.google.com" title="Mini Google Browser" allowfullscreen></iframe>
 
     <script>
-        // Function to set the iframe src to discord.com or any other URL
-        function loadPage(url) {
+        function performSearch() {
+            const query = document.getElementById('searchInput').value;
             const iframe = document.getElementById('miniBrowser');
-            iframe.src = url;
+            const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+            iframe.src = searchUrl;
         }
-
-        // Load discord.com as default
-        loadPage('https://discord.com');
     </script>
 </body>
 </html>
