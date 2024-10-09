@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookmarklet run</title>
+    <title>Bookmarklet Run</title>
     <style>
         body {
             margin: 0;
@@ -88,43 +88,26 @@
 <body>
     <div class="header">
         <div class="search-container">
-            <input type="text" class="search-bar" id="searchInput" placeholder="Search Bookmarklet Designs...">
+            <input type="text" class="search-bar" id="searchInput" placeholder="Search Bookmarklets...">
         </div>
     </div>
     <div class="content">
         <div id="results"></div>
         <div class="bookmarklet-container">
-            <h3 style="color: white;">Bookmarklet Design</h3>
+            <h3 style="color: white;">Bookmarklet Run</h3>
             <button class="bookmarklet-button" onclick="runBookmarklet()">Bookmarklet Run Test</button>
-            <p class="bookmarklet-description">This is a test for bookmarklet</p>
+            <p class="bookmarklet-description">This is where you can run bookmarklets</p>
         </div>
     </div>
 
     <script>
-        const bookmarkletDesigns = [
-            { title: "Design 1", description: "A sleek and modern bookmarklet design" },
-            { title: "Design 2", description: "Minimalist approach to bookmarklet functionality" },
-            { title: "Design 3", description: "Feature-rich bookmarklet with advanced options" }
-        ];
-
         function runBookmarklet() {
             alert("Bookmarklet test activated!");
         }
 
         document.getElementById('searchInput').addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            const results = bookmarkletDesigns.filter(design => 
-                design.title.toLowerCase().includes(searchTerm) || 
-                design.description.toLowerCase().includes(searchTerm)
-            );
-
-            const resultsContainer = document.getElementById('results');
-            resultsContainer.innerHTML = results.map(design => 
-                `<div style="margin-bottom: 10px;">
-                    <h4 style="margin: 0;">${design.title}</h4>
-                    <p style="margin: 5px 0;">${design.description}</p>
-                </div>`
-            ).join('');
+            // This function can be used to implement bookmarklet search functionality
+            // For now, it's empty as we've removed the predefined designs
         });
     </script>
 </body>
