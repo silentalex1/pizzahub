@@ -1,1 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade Game Site</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            background-color: #333;
+            width: 200px;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+        .sidebar button {
+            display: block;
+            width: 100%;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .sidebar button:hover {
+            background-color: #0056b3;
+        }
+        .main {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+        .activity-section {
+            margin-bottom: 2rem;
+        }
+        .activity-section h2 {
+            margin-bottom: 1rem;
+        }
+        .activity-section .activity-images {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .activity-section .activity-images img {
+            width: 100px;
+            height: 100px;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+        @media (max-width: 600px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                padding: 0.5rem;
+            }
+            .sidebar button {
+                padding: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+            .main {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <button onclick="showSection('fun')">Fun Activities</button>
+        <button onclick="showSection('favorite')">Favorite Activities</button>
+        <button onclick="showSection('most-played')">Most Played Activities</button>
+    </div>
+    <div class="main">
+        <div id="fun" class="activity-section">
+            <h2>Fun Activities</h2>
+            <div class="activity-images">
+                <!-- Add images here -->
+                <img src="path-to-fun-activity-image1.jpg" alt="Fun Activity 1" onclick="navigateToGame('fun1')">
+                <img src="path-to-fun-activity-image2.jpg" alt="Fun Activity 2" onclick="navigateToGame('fun2')">
+                <!-- More images -->
+            </div>
+        </div>
+        <div id="favorite" class="activity-section">
+            <h2>Your Favorite Activities</h2>
+            <div class="activity-images">
+                <!-- Add images here -->
+                <img src="path-to-favorite-activity-image1.jpg" alt="Favorite Activity 1" onclick="navigateToGame('favorite1')">
+                <img src="path-to-favorite-activity-image2.jpg" alt="Favorite Activity 2" onclick="navigateToGame('favorite2')">
+                <!-- More images -->
+            </div>
+        </div>
+        <div id="most-played" class="activity-section">
+            <h2>Most Played Activities</h2>
+            <div class="activity-images">
+                <!-- Add images here -->
+                <img src="path-to-most-played-activity-image1.jpg" alt="Most Played Activity 1" onclick="navigateToGame('mostplayed1')">
+                <img src="path-to-most-played-activity-image2.jpg" alt="Most Played Activity 2" onclick="navigateToGame('mostplayed2')">
+                <!-- More images -->
+            </div>
+        </div>
+    </div>
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.activity-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
 
+        function navigateToGame(gameId) {
+            console.log(`Navigating to game ${gameId}`);
+            // Navigate to the game page
+            // window.location.href = `path-to-game-page/${gameId}`;
+        }
+
+        // Initially show the fun activities section
+        showSection('fun');
+    </script>
+</body>
+</html>
