@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Extension Scanner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #000000, #FFA500);
+            font-family: 'Roboto', sans-serif;
+            background: #121212;
+            color: #E0E0E0;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -16,54 +18,57 @@
             margin: 0;
         }
         .container {
-            background: #333;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255,165,0,0.5);
+            background: #1F1F1F;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             text-align: center;
-            width: 80%;
-            max-width: 600px;
-            color: white;
+            width: 90%;
+            max-width: 700px;
         }
         button {
-            background: #FFA500;
-            color: black;
-            padding: 15px 32px;
+            background: #FF9800;
+            color: #121212;
+            padding: 14px 28px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s;
         }
         button:hover {
-            background: #FF8C00;
+            background: #FB8C00;
         }
         .search-bar input {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             margin-top: 20px;
             font-size: 16px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background: #222;
+            color: #E0E0E0;
         }
         .extension-list {
-            margin-top: 20px;
+            margin-top: 30px;
             text-align: left;
         }
         .extension-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 14px;
+            border: 1px solid #333;
+            border-radius: 8px;
             margin-top: 10px;
-            background: #444;
+            background: #292929;
         }
         .switch {
             position: relative;
             display: inline-block;
-            width: 40px;
-            height: 20px;
+            width: 50px;
+            height: 24px;
         }
         .switch input {
             display: none;
@@ -75,26 +80,26 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #ccc;
+            background-color: #444;
             transition: .4s;
-            border-radius: 20px;
+            border-radius: 24px;
         }
         .slider:before {
             position: absolute;
             content: "";
-            height: 14px;
-            width: 14px;
-            left: 3px;
-            bottom: 3px;
+            height: 20px;
+            width: 20px;
+            left: 2px;
+            bottom: 2px;
             background-color: white;
             transition: .4s;
             border-radius: 50%;
         }
         input:checked + .slider {
-            background-color: #FFA500;
+            background-color: #FF9800;
         }
         input:checked + .slider:before {
-            transform: translateX(20px);
+            transform: translateX(26px);
         }
         .browser-info {
             color: #32CD32;
