@@ -1,1 +1,66 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Hub</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #FFA500;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            border: 2px solid #FFA500;
+            border-radius: 10px;
+            padding: 20px;
+            background: rgba(255, 165, 0, 0.1);
+        }
+        .search-bar input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            border: 2px solid #FFA500;
+            border-radius: 5px;
+            outline: none;
+            background: rgba(255, 165, 0, 0.1);
+            color: #FFA500;
+            font-size: 16px;
+        }
+        .dropdown select {
+            padding: 10px;
+            border: 2px solid #FFA500;
+            border-radius: 5px;
+            background: #FFA500;
+            color: #000;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Activity Hub</h1>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for activities">
+        </div>
+        <div class="dropdown">
+            <select>
+                <option value="shooting">Shooting Activity</option>
+                <option value="driving">Driving Activity</option>
+                <option value="fun">Fun Activity</option>
+            </select>
+        </div>
+    </div>
+</body>
+</html>
