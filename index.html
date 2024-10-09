@@ -3,112 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookmarklet Run</title>
+    <title>Chrome Extension Manager</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(45deg, #000000, #FFA500);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .header {
+            background-color: #f4f4f4;
             padding: 20px;
             text-align: center;
         }
-
-        .search-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 30px;
+        #extensionList {
+            display: none;
+            margin: 20px auto;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
         }
-
-        .search-bar {
-            width: 50%;
-            padding: 12px 24px;
-            font-size: 18px;
-            border: none;
-            border-radius: 30px;
-            background-color: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        .search-bar:focus {
-            outline: none;
-            box-shadow: 0 0 15px rgba(255, 165, 0, 0.5);
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .content {
+        .extension-item {
             display: flex;
             justify-content: space-between;
-            padding: 0 50px;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
         }
-
-        .bookmarklet-container {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            width: 300px;
+        #searchBar {
+            display: none;
+            margin-bottom: 20px;
         }
-
-        .bookmarklet-button {
-            background-color: #FFA500;
-            color: black;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
+        #toggleButton {
             cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .bookmarklet-button:hover {
-            background-color: #FF8C00;
-            transform: scale(1.05);
-        }
-
-        .bookmarklet-description {
+            padding: 5px 10px;
+            background-color: #28a745;
             color: white;
-            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
-
-        #results {
-            color: white;
-            margin-top: 20px;
+        #toggleButton:hover {
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="search-container">
-            <input type="text" class="search-bar" id="searchInput" placeholder="Search Bookmarklets...">
-        </div>
-    </div>
-    <div class="content">
-        <div id="results"></div>
-        <div class="bookmarklet-container">
-            <h3 style="color: white;">Bookmarklet Run</h3>
-            <button class="bookmarklet-button" onclick="runBookmarklet()">Bookmarklet Run Test</button>
-            <p class="bookmarklet-description">This is where you can run bookmarklets</p>
-        </div>
-    </div>
 
-    <script>
-        function runBookmarklet() {
-            alert("Bookmarklet test activated!");
-        }
+<h1>Chrome Extension Manager</h1>
+<button id="scanButton">Scan Chrome</button>
 
-        document.getElementById('searchInput').addEventListener('input', function() {
-            // This function can be used to implement bookmarklet search functionality
-            // For now, it's empty as we've removed the predefined designs
+<div id="searchBar">
+    <input type="text" id="searchInput" placeholder="Search extensions..." onkeyup="filterExtensions()">
+</div>
+
+<div id="extensionList">
+    <h2>Installed Extensions:</h2>
+    <div class="extension-item" data-name="Extension 1">
+        <span>Extension 1</span>
+        <button onclick="toggleExtension(this)">Disable</button>
+    </div>
+    <div class="extension-item" data-name="Extension 2">
+        <span>Extension 2</span>
+        <button onclick="toggleExtension(this)">Disable</button>
+    </div>
+    <div class="extension-item" data-name="Extension 3">
+        <span>Extension 3</span>
+        <button onclick="toggleExtension(this)">Disable</button>
+    </div>
+    <!-- Add more extensions as needed -->
+</div>
+
+<script>
+    document.getElementById('scanButton').onclick = function() {
+        document.getElementById('extensionList').style.display = 'block';
+        document.getElementById('searchBar').style.display = 'block';
+    };
+
+    function toggleExtension(button) {
+        const extensionItem = button.parentElement;
+        const extensionName = extensionItem.dataset.name;
+        const action = button.textContent === 'Disable' ? 'Disabled' : 'Enabled';
+        
+        // Simulate disabling an extension
+        alert(`${extensionName} has been ${action.toLowerCase()}.`);
+        extensionItem.style.display = 'none';
+    }
+
+    function filterExtensions() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const extensionItems = document.querySelectorAll('.extension-item');
+
+        extensionItems.forEach(item => {
+            const name = item.dataset.name.toLowerCase();
+            if (name.includes(input)) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
         });
-    </script>
+    }
+</script>
+
 </body>
 </html>
