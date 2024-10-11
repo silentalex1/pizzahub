@@ -4,29 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizza Hangout</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(to bottom right, black, orange);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #141e30, #243b55);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: white;
+            color: #fff;
         }
 
         nav {
             width: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(20, 30, 48, 0.9);
             position: absolute;
             top: 0;
             display: flex;
-            justify-content: center;
-            padding: 15px 0;
+            justify-content: space-between;
+            padding: 15px 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         nav ul {
@@ -34,7 +35,7 @@
             padding: 0;
             margin: 0;
             display: flex;
-            gap: 30px;
+            gap: 20px;
         }
 
         nav ul li {
@@ -42,23 +43,30 @@
         }
 
         nav ul li a {
-            color: white;
+            color: #fff;
             text-decoration: none;
-            font-size: 20px;
+            font-size: 18px;
             transition: color 0.3s ease;
         }
 
         nav ul li a:hover {
-            color: orange;
+            color: #ff6f61;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff6f61;
         }
 
         h1 {
             font-size: 60px;
             text-align: center;
+            margin-bottom: 20px;
         }
 
         .highlight-orange {
-            color: orange;
+            color: #ff6f61;
         }
 
         .button-container {
@@ -68,7 +76,7 @@
         }
 
         .button {
-            background-color: orange;
+            background-color: #ff6f61;
             color: white;
             border: none;
             padding: 15px 30px;
@@ -79,13 +87,14 @@
         }
 
         .button:hover {
-            background-color: darkorange;
+            background-color: #ff8563;
             color: white;
         }
     </style>
 </head>
 <body>
     <nav>
+        <div class="logo">Pizza Hangout</div>
         <ul>
             <li><a href="#">Activities</a></li>
             <li><a href="#">Apps</a></li>
