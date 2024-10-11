@@ -5,55 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizza Hangout</title>
     <style>
-        body {
-            background-color: black;
-            color: white;
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(black, orange);
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            height: 100vh;
-            margin: 0;
+            align-items: center;
+            color: white;
         }
-        .title {
-            font-size: 3em;
+
+        nav {
+            width: 100%;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
             color: orange;
         }
-        .navbar {
+
+        h1 {
+            font-size: 50px;
+            text-align: center;
+        }
+
+        .highlight-orange {
+            color: orange;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
             margin-top: 20px;
         }
-        .navbar a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: white;
-            font-size: 1.5em;
-        }
-        .buttons {
-            margin-top: 50px;
-        }
-        .buttons button {
+
+        .button {
             background-color: orange;
             color: black;
             border: none;
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 1em;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: darkorange;
         }
     </style>
 </head>
 <body>
-    <div class="title">
-        Welcome to <span style="color: orange;">Pizza Hangout</span>
-    </div>
-    <div class="navbar">
-        <a href="#activitys">Activitys</a>
-        <a href="#apps">Apps</a>
-        <a href="#search">Search</a>
-    </div>
-    <div class="buttons">
-        <button>Join our discord</button>
-        <button>Launch in about:blink</button>
+    <nav>
+        <ul>
+            <li><a href="#">Activitys</a></li>
+            <li><a href="#">Apps</a></li>
+            <li><a href="#">Search</a></li>
+        </ul>
+    </nav>
+
+    <h1>Welcome to <span class="highlight-orange">Pizza Hangout</span></h1>
+
+    <div class="button-container">
+        <button class="button" onclick="window.location.href='https://discord.com'">Join our Discord</button>
+        <button class="button" onclick="window.location.href='about:blank'">Launch in about:blank</button>
     </div>
 </body>
 </html>
