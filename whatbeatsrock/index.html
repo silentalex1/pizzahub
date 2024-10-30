@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +18,15 @@
     </style>
 </head>
 <body>
-    <iframe src="https://whatbeatsrock.com" title="Embedded Website"></iframe>
+    <input type="text" id="urlInput" value="https://whatbeatsrock.com" placeholder="Enter website URL">
+    <button onclick="loadWebsite()">Load website</button>
+    <iframe id="websiteFrame" src="https://whatbeatsrock.com" title="Embedded Website"></iframe>
+
+    <script>
+        function loadWebsite() {
+            const url = document.getElementById('urlInput').value;
+            document.getElementById('websiteFrame').src = url;
+        }
+    </script>
 </body>
 </html>
